@@ -42,7 +42,7 @@
                     <div class="topic-body">
                         {!! $topic->body !!}
                     </div>
-                    
+
                     @can('update', $topic)
                         <div class="operate">
                             <hr>
