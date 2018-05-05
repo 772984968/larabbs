@@ -23,10 +23,13 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
             <div class="panel panel-default">
+
+
                 <div class="panel-body">
                     <h1 class="text-center">
                         {{ $topic->title }}
@@ -63,6 +66,14 @@
 
                 </div>
             </div>
+            {{-- 用户回复列表 --}}
+            <div class="panel panel-default topic-reply">
+                <div class="panel-body">
+                    @include('topics._reply_box', ['topic' => $topic])
+                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                </div>
+            </div>
+
         </div>
     </div>
 @stop
