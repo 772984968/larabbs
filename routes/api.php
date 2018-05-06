@@ -13,22 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 $api=app('Dingo\Api\Routing\Router');
-$api->version('v1',function($api){
-$api->get('version',function(){
-    $sms = app('easysms');
-    try {
-        $sms->send(15899595363, [
-            'content'  => '【Lbbs社区】您的验证码是1234。如非本人操作，请忽略本短信',
-        ]);
-} catch (\GuzzleHttp\Exception\ClientException $exception) {
-        $response = $exception->getResponse();
-        $result = json_decode($response->getBody()->getContents(), true);
-        dd($result);
-    }
-});
-});
-$api->version('v2',function($api){
-    $api->get('version',function(){
-        return response('thi is version v2');
-    });
+$api->version('v1',[ 'namespace' => 'App\Http\Controllers\Api'],function($api) {
+    // 短信验证码
+    $api->post('verificationCodes', 'VerificationCodesController@store')
+        ->name('api.verificationCodes.store');
 });
