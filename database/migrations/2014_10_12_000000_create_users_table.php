@@ -17,11 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->nullable()->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->string('avatar')->nullable();
             $table->string('introduction')->nullable();
             $table->integer('notification_count')->unsigned()->default(0);
+            $table->string('weixin_openid')->unique()->nullable()->comment('微信产品iD');
+            $table->string('weixin_unionid')->unique()->nullable()->comment('微信唯一ID');
             $table->string('phone')->nullable()->unique();
             $table->timestamps();
         });

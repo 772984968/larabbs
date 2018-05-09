@@ -25,7 +25,7 @@ class AddReferences extends Migration
     }
 
     public function down()
-    {
+    {/*
         Schema::table('topics', function (Blueprint $table) {
             // 移除外键约束
             $table->dropForeign(['user_id']);
@@ -35,6 +35,6 @@ class AddReferences extends Migration
             $table->dropForeign(['user_id']);
             $table->dropForeign(['topic_id']);
         });
-
+*/
     }
 }
